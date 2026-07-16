@@ -733,19 +733,48 @@
     }
 
     @media (max-width: 900px) {
+      html, body { overflow-x: hidden; }
       .blog-intro { grid-template-columns: 1fr; }
       .intro-note { max-width: 560px; }
       .blog-layout { grid-template-columns: 1fr; }
       .sidebar { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .site-header { width: min(1180px, calc(100% - 40px)) !important; translate: none !important; }
+      .site-shell .glass-card { max-width: 100%; translate: none !important; }
+      .site-shell .glass-card:not(.site-header) { width: 100% !important; min-height: 0 !important; }
+      .blog-layout, .sidebar, .custom-panels { width: 100%; min-width: 0; }
+      .glass-card:not(.site-header) > .panel-item-layer {
+        position: relative;
+        inset: auto;
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+      .glass-card:not(.site-header) > .panel-item-layer:empty { display: none; margin: 0; }
+      .canvas-item {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        max-width: 100%;
+        min-height: 0 !important;
+        translate: none !important;
+      }
+      .sidebar-card > :not(.panel-item-layer),
+      .custom-panel > :not(.panel-item-layer) {
+        max-width: 100%;
+        left: auto !important;
+        top: auto !important;
+      }
+      .site-footer > * { position: static !important; inset: auto !important; }
     }
 
     @media (max-width: 620px) {
       .site-shell { width: min(100% - 22px, 1180px); padding-top: 92px; }
       .site-header {
         top: 11px;
-        width: min(100% - 22px, 1180px);
-        min-height: 60px;
+        width: min(100% - 22px, 1180px) !important;
+        min-height: 60px !important;
         padding: 10px 12px 10px 16px;
+        translate: none !important;
       }
       .site-nav a { padding: 8px; font-size: 0.75rem; }
       .blog-intro { margin-top: 18px; padding: 36px 24px; }
